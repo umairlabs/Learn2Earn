@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+    <div class="theme-wrapper">
+        <app-header [scrolled]="scrolled" slot="fixed"></app-header>
+
+        <!-- 1) HERO SECTION -->
+        <section class="blog-hero">
+            <div class="hero-container">
+                <h1>Tech <span>Insights</span> & Stories</h1>
+                <p>Explore the latest trends, guides, and thoughts from the leaders in software and education.</p>
+            </div>
+        </section>
+
+        <!-- 2) SEARCH & FILTER -->
+        <section class="filter-section">
+            <div class="section-container">
+                <div class="search-bar">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <input type="text" placeholder="Search articles...">
+                </div>
+                <div class="category-filters">
+                    @for (cat of categories; track cat) {
+                    <button [class.active]="selectedCategory === cat" (click)="selectedCategory = cat">
+                        {{ cat }}
+                    </button>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 3) FEATURED POST -->
+        <section class="featured-section">
+            <div class="section-container">
+                <div class="featured-card">
+                    <div class="featured-image"
+                        style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000')">
+                    </div>
+                    <div class="featured-content">
+                        <span class="badge">Featured</span>
+                        <h2>How Learn2Earn is Redefining Tech Learning in 2026</h2>
+                        <p>A deep dive into our hybrid model of combining real-world software production with hands-on
+                            technical training.</p>
+                        <div class="meta">
+                            <span><ion-icon name="person-outline"></ion-icon> Admin</span>
+                            <span><ion-icon name="time-outline"></ion-icon> 5 min read</span>
+                        </div>
+                        <ion-button fill="clear">Read Full Story <ion-icon name="chevron-forward-outline"
+                                slot="end"></ion-icon></ion-button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) BLOG GRID -->
+        <section class="blog-grid-section">
+            <div class="section-container">
+                <div class="blog-grid">
+                    @for (post of posts; track post.title) {
+                    <div class="post-card">
+                        <div class="post-image" [style.background-image]="'url(' + post.image + ')'"></div>
+                        <div class="post-content">
+                            <span class="post-cat">{{ post.category }}</span>
+                            <h3>{{ post.title }}</h3>
+                            <div class="post-meta">
+                                <span>{{ post.date }}</span>
+                                <span>•</span>
+                                <span>{{ post.author }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) PAGINATION -->
+        <!-- <section class="pagination-section">
+            <div class="pagination">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <span>...</span>
+                <button>10</button>
+            </div>
+        </section> -->
+
+        <app-footer></app-footer>
+    </div>
+</ion-content>

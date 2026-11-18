@@ -1,0 +1,162 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+    <div class="theme-wrapper">
+        <app-header [scrolled]="scrolled" slot="fixed"></app-header>
+
+        <!-- 1) HERO SECTION -->
+        <section class="services-hero">
+            <div class="hero-container">
+                <h1>Our Professional <span>Solutions</span></h1>
+                <p>Comprehensive technology services designed to scale your business and empower your workforce.</p>
+            </div>
+        </section>
+
+        <!-- 2) PREMIUM SERVICES LIST -->
+        <section class="services-list-section">
+            <div class="section-container">
+                <div class="services-list">
+                    @for (service of services; track $index; let i = $index) {
+                    <div class="premium-service-card" [ngClass]="{'alt-layout': i % 2 !== 0}">
+                        <div class="card-image-area">
+                            <img [src]="service.image" [alt]="service.title" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <div class="card-content-wrapper">
+                            <div class="card-header-area">
+                                <div class="icon-glass-box">
+                                    <ion-icon [name]="service.icon"></ion-icon>
+                                </div>
+                                <h3>{{ service.title }}</h3>
+                            </div>
+
+                            <div class="card-body-area">
+                                <p class="service-desc" [ngClass]="{'expanded': expandedServiceIndex === i}">
+                                    {{ service.description }}
+                                    @if (expandedServiceIndex !== i) {
+                                    <span class="see-more" (click)="toggleSeeMore(i, $event)">See more</span>
+                                    } @else {
+                                    <span class="see-more" (click)="toggleSeeMore(i, $event)">See less</span>
+                                    }
+                                </p>
+
+                                <div class="tech-stack-desc">
+                                    <div class="tech-stack-label">
+                                        <div class="dot"></div>
+                                        <span>TECH STACK</span>
+                                    </div>
+                                    <div class="tech-chips">
+                                        @for (tech of service.techDescription.split(','); track $index) {
+                                        <span class="tech-chip">{{ tech }}</span>
+                                        }
+                                    </div>
+                                    <p class="tech-text-mobile">{{ service.techDescription }}</p>
+                                </div>
+                            </div>
+
+                            <div class="card-footer-area">
+                                <ion-button class="premium-btn" fill="outline" (click)="openContactAlert($event)">
+                                    <span>DISCUSS PROJECT</span>
+                                    <ion-icon name="chatbox-ellipses" class="desktop-icon"></ion-icon>
+                                    <ion-icon name="arrow-forward" class="mobile-icon"></ion-icon>
+                                </ion-button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+        <section class="process-section">
+            <div class="section-container">
+                <h2 class="section-title">How We <span>Deliver</span></h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-num">01</div>
+                        <div class="step-content">
+                            <h3>Discovery</h3>
+                            <p>We deep dive into your requirements to understand the core challenges and goals.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">02</div>
+                        <div class="step-content">
+                            <h3>Design & Strategy</h3>
+                            <p>Crafting a robust blueprint and choosing the right tech stack for your solution.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">03</div>
+                        <div class="step-content">
+                            <h3>Agile Development</h3>
+                            <p>Iterative building with regular feedback sessions and transparent progress.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-num">04</div>
+                        <div class="step-content">
+                            <h3>Launch & Support</h3>
+                            <p>Seamless deployment followed by continuous monitoring and optimization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) TECH STACK -->
+        <section class="tech-section">
+            <div class="section-container">
+                <h2 class="section-title">Technologies <span>We Use</span></h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <p>Angular</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Ionic</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Node.js</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Python</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>React</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Django</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Flutter</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>PostgreSQL</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Fast API</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Google Cloud</p>
+                    </div>
+                    <div class="tech-item">
+                        <p>Firebase</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) CTA -->
+        <section class="cta-section">
+            <div class="cta-inner">
+                <h2>Ready to build something great?</h2>
+                <p>Talk to our experts today and get a custom roadmap for your project.</p>
+                <!-- <ion-button class="cta-btn secondary" href="https://www.fiverr.com/learn2earnpk" target="_blank">Start
+                    Your Project</ion-button> -->
+                <ion-button class="cta-btn secondary" (click)="openContactAlert($event)" target="_blank">Start
+                    Your Project</ion-button>
+            </div>
+        </section>
+
+        <app-footer></app-footer>
+    </div>
+
+    <!-- CONTACT ALERT COMPONENT -->
+    <app-alert [isOpen]="isModalOpen" [experts]="serviceExperts" (closed)="isModalOpen = false"></app-alert>
+</ion-content>

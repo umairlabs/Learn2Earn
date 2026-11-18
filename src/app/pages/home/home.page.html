@@ -1,0 +1,226 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+  <div class="theme-wrapper">
+    <!-- 1) HEADER -->
+    <app-header [scrolled]="scrolled" slot="fixed"></app-header>
+
+    <!-- 2) HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-bg-elements">
+        <div class="hero-mesh"></div>
+        <div class="hero-light-beam"></div>
+      </div>
+
+      <div class="section-container">
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-align-items-center">
+            <ion-col size-lg="5" size-md="12" class="hero-content-col">
+              <div class="hero-text-wrapper">
+                <!-- Mobile glowing background -->
+                <div class="hero-mobile-glow"></div>
+
+                <div class="reveal-wrap">
+                  <h1 class="hero-title">Innovative Software <span>Solutions </span> & Training</h1>
+                </div>
+                <div class="reveal-wrap">
+                  <p class="hero-description">Leading-edge software development and professional IT training. We build
+                    robust digital products for global businesses while empowering tech talent.</p>
+                </div>
+                <div class="hero-actions">
+                  <ion-button class="cta-primary" routerLink="/services">Our Solutions</ion-button>
+                  <ion-button fill="outline" class="cta-secondary" routerLink="/about">Join Institute</ion-button>
+                </div>
+
+                <!-- Floating orb animation -->
+                <div class="hero-floating-orb"></div>
+              </div>
+            </ion-col>
+            <ion-col size-lg="7" size-md="12" class="hero-visual-col">
+              <div class="model-container" #heroVisual>
+                @if (canLoadModel) {
+                <iframe src="https://my.spline.design/untitled-IHm2SEBt3xTb1H4C11RCTZ5E/" frameborder="0" width="100%"
+                  height="100%" class="spline-iframe" loading="lazy" importance="low" (load)="isModelVisible = true"></iframe>
+                }
+
+                <!-- Loading Placeholder (Skeletal or Blur) -->
+                <div class="model-placeholder" [class.hidden]="isModelVisible">
+                  <div class="placeholder-glow"></div>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </section>
+
+    <!-- 3) CINEMATIC SHOWCASE: WHAT WE DO -->
+    <section class="what-we-do-section">
+      <div class="section-container">
+        <div class="showcase-header">
+          <h2 class="showcase-title">What We <span>Do</span></h2>
+          <p class="showcase-subtitle">Pioneering the next era of digital dominance. We don't just provide services; we
+            engineer success.</p>
+        </div>
+
+        <div class="showcase-grid">
+          @for (item of showcaseItems; track item.title) {
+          <div class="showcase-block" (click)="navigateToServices()">
+            <div class="block-glow" [style.background]="item.accent"></div>
+            <div class="block-content">
+              <div class="icon-orb">
+                <ion-icon [name]="item.icon"></ion-icon>
+              </div>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+              <div class="explore-link">
+                Explore <ion-icon name="arrow-forward"></ion-icon>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="showcase-footer">
+          <ion-button fill="clear" class="discover-btn" (click)="navigateToServices()">
+            Discover All Solutions <ion-icon name="arrow-forward" slot="end"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) STORYTELLING JOURNEY: HOW WE HELP YOU GROW -->
+    <section class="journey-section">
+      <div class="section-container">
+        <div class="journey-header">
+          <h2 class="journey-title">How We Help You <span>Grow</span></h2>
+          <p class="journey-subtitle">A strategic partnership journey engineered for sustainable digital dominance.</p>
+        </div>
+
+        <div class="journey-timeline-wrapper">
+          <div class="timeline-line">
+            <div class="timeline-progress"></div>
+          </div>
+
+          <div class="journey-steps">
+            @for (step of journeySteps; track step.id; let i = $index) {
+            <div class="journey-step" [class.active]="i === 0">
+              <div class="step-marker">
+                <div class="marker-dot"></div>
+                <div class="marker-glow"></div>
+                <span class="step-id">{{ step.id }}</span>
+              </div>
+              <div class="step-card">
+                <div class="step-icon">
+                  <ion-icon [name]="step.icon"></ion-icon>
+                </div>
+                <h3>{{ step.title }}</h3>
+                <p>{{ step.description }}</p>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) WHY CHOOSE US: CINEMATIC STORYTELLING -->
+    <section class="why-us-section">
+      <div class="section-container">
+        <!-- Abstract Background Elements -->
+        <div class="abstract-shape blob-1"></div>
+        <div class="abstract-shape blob-2"></div>
+
+        <div class="why-us-header">
+          <h2 class="section-title">Beyond Software. <span>Engineering Success.</span></h2>
+          <p class="section-subtitle">We don't just build products; we architect the future of your business
+            through technological excellence and strategic innovation.</p>
+        </div>
+
+        <div class="why-us-grid">
+          <div class="benefit-card glass-card">
+            <div class="benefit-icon">
+              <ion-icon name="diamond-outline"></ion-icon>
+            </div>
+            <div class="benefit-text">
+              <h3>Engineering Excellence</h3>
+              <p>Industrial-grade codebases optimized for scale, performance, and long-term maintainability.</p>
+            </div>
+          </div>
+
+          <div class="benefit-card glass-card">
+            <div class="benefit-icon">
+              <ion-icon name="flash-outline"></ion-icon>
+            </div>
+            <div class="benefit-text">
+              <h3>Agile Innovation</h3>
+              <p>Rapid deployment cycles and transparent workflows that keep you ahead of the digital curve.</p>
+            </div>
+          </div>
+
+          <div class="benefit-card glass-card">
+            <div class="benefit-icon">
+              <ion-icon name="layers-outline"></ion-icon>
+            </div>
+            <div class="benefit-text">
+              <h3>Strategic Integration</h3>
+              <p>Seamlessly merging modern tech stacks with your business goals for maximum impact.</p>
+            </div>
+          </div>
+
+          <div class="benefit-card glass-card">
+            <div class="benefit-icon">
+              <ion-icon name="shield-checkmark-outline"></ion-icon>
+            </div>
+            <div class="benefit-text">
+              <h3>Secure & Scalable</h3>
+              <p>Built-in security and architectural flexibility that grows alongside your evolving business needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) STATS SECTION
+    <section class="stats-section">
+      <div class="section-container">
+        <ion-grid>
+          <ion-row>
+            <ion-col size-md="4" size="12" class="stat-item">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Years of Innovation</div>
+            </ion-col>
+            <ion-col size-md="4" size="12" class="stat-item">
+              <div class="stat-number">5k+</div>
+              <div class="stat-label">Digital Graduates</div>
+            </ion-col>
+            <ion-col size-md="4" size="12" class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Partner Successes</div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </section> -->
+
+    <!-- 7) FINAL CALL TO ACTION -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-inner">
+          <div class="cta-glow-bg"></div>
+          <div class="cta-content">
+            <h2>Ready to Engineer <span>Your Future?</span></h2>
+            <p>Partner with experts who turn bold ideas into powerful digital products. From AI to enterprise solutions,
+              Learn2Earn helps you scale with confidence.</p>
+            <div class="cta-actions">
+              <ion-button fill="solid" class="cta-btn" routerLink="/services">
+                Start Your Journey <ion-icon name="arrow-forward" slot="end"></ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7) FOOTER -->
+    <app-footer></app-footer>
+  </div>
+</ion-content>

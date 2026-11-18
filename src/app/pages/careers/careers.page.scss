@@ -1,0 +1,284 @@
+.careers-hero {
+    padding: 160px 40px 100px;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(253, 253, 253, 0.8)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1500');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+
+    h1 {
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 800;
+        margin-bottom: 24px;
+        letter-spacing: -0.04em;
+
+        span {
+            color: var(--primary-orange);
+        }
+    }
+
+    p {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        margin: 0 auto 40px;
+    }
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.culture-section {
+    padding: 100px 40px;
+    background: white;
+
+    .culture-content {
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+
+            span {
+                color: var(--primary-orange);
+            }
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 20px;
+                font-weight: 600;
+                font-size: 1.1rem;
+
+                ion-icon {
+                    color: var(--primary-orange);
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .culture-image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        height: 500px;
+
+        .img-box {
+            background-color: #f3f4f6;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+
+        .box-1 {
+            grid-row: span 2;
+        }
+    }
+}
+
+.benefits-section {
+    padding: 120px 40px;
+    background: #0f0f0f;
+    color: white;
+
+    .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 80px;
+
+        span {
+            color: var(--primary-orange);
+        }
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+    }
+
+    .benefit-card {
+        padding: 40px;
+        background: #1a1a1a;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        // transition: all removed to prevent conflict with GSAP
+
+        &:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(244, 160, 36, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 24px;
+
+            ion-icon {
+                color: var(--primary-orange);
+                font-size: 24px;
+            }
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+    }
+}
+
+/* 5) CALL TO ACTION */
+.cta-section {
+    padding: 100px 40px;
+    background: #0f0f0f;
+}
+
+.cta-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, var(--primary-orange) 0%, #FB923C 100%);
+    border-radius: 24px;
+    text-align: center;
+    color: white;
+
+    h2 {
+        font-family: var(--font-headings);
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+        padding: 60px 20px;
+
+        h2 {
+            font-size: 1.75rem;
+        }
+    }
+}
+
+.cta-btn {
+    --background: white;
+    --color: var(--primary-orange);
+    --border-radius: 30px;
+    --padding-start: 40px;
+    --padding-end: 40px;
+    height: 60px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    &.secondary {
+        --background: transparent;
+        --color: white;
+        --border-color: white;
+        --border-style: solid;
+        --border-width: 2px;
+    }
+}
+
+.jobs-section {
+    padding: 120px 40px;
+    background: white;
+
+    .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 80px;
+
+        span {
+            color: var(--primary-orange);
+        }
+    }
+
+    .jobs-list {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .job-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+        background: #f9fafb;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        // transition: all removed to prevent conflict with GSAP
+
+        &:hover {
+            background: white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            transform: scale(1.02);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .apply-btn {
+            --border-color: var(--primary-orange);
+            --color: var(--primary-orange);
+            --border-radius: 12px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 576px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+
+            .apply-btn {
+                width: 100%;
+            }
+        }
+    }
+}

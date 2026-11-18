@@ -1,0 +1,68 @@
+<header class="main-header" [class.scrolled]="scrolled">
+    <div class="header-container">
+        <div class="logo" [routerLink]="['/home']">
+            <span class="logo-text">Learn<span>2Earn</span></span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <a routerLink="/home" routerLinkActive="active">Home</a>
+            <a routerLink="/about" routerLinkActive="active">About</a>
+            <a routerLink="/services" routerLinkActive="active">Services</a>
+            <a routerLink="/portfolio" routerLinkActive="active">Portfolio</a>
+            <!-- <a routerLink="/courses" routerLinkActive="active">Courses</a>
+            <a routerLink="/blog" routerLinkActive="active">Blog</a>
+            <a routerLink="/careers" routerLinkActive="active">Careers</a> -->
+        </nav>
+
+        <div class="contact-strip">
+            <div class="contact-item">
+                <ion-icon name="call-outline"></ion-icon>
+                <a href="tel:+923317193531">+92 331 7193531</a>
+            </div>
+            <div class="contact-item">
+                <ion-icon name="mail-outline"></ion-icon>
+                <a href="mailto:shahzaib@learn2earntech.com">shahzaib@learn2earntech.com</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-btn" (click)="toggleMenu()" role="button" [attr.aria-label]="isMenuOpen ? 'Close menu' : 'Open menu'" [attr.aria-expanded]="isMenuOpen" tabindex="0" (keydown.enter)="toggleMenu()">
+            <ion-icon [name]="isMenuOpen ? 'close-outline' : 'menu-outline'"></ion-icon>
+        </div>
+
+        <!-- Mobile Navigation Overlay -->
+        <div class="mobile-nav-overlay" [class.open]="isMenuOpen" (click)="closeMenu()" role="dialog" [attr.aria-hidden]="!isMenuOpen"></div>
+
+        <!-- Mobile Navigation Menu -->
+        <nav class="mobile-nav" [class.open]="isMenuOpen" role="navigation" aria-label="Mobile navigation">
+            <div class="mobile-nav-header">
+                <span class="logo-text">Learn<span>2Earn</span></span>
+                <div class="close-btn" (click)="closeMenu()" role="button" aria-label="Close menu" tabindex="0" (keydown.enter)="closeMenu()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="mobile-links">
+                <a routerLink="/home" routerLinkActive="active" (click)="closeMenu()">Home</a>
+                <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a>
+                <a routerLink="/services" routerLinkActive="active" (click)="closeMenu()">Services</a>
+                <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMenu()">Portfolio</a>
+                <!-- <a routerLink="/courses" routerLinkActive="active" (click)="closeMenu()">Courses</a>
+                <a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">Blog</a>
+                <a routerLink="/careers" routerLinkActive="active" (click)="closeMenu()">Careers</a> -->
+            </div>
+
+            <div class="mobile-contact">
+                <div class="contact-item">
+                    <ion-icon name="call-outline"></ion-icon>
+                    <a href="tel:+923317193531">+92 331 7193531</a>
+                </div>
+                <div class="contact-item">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <a href="mailto:shahzaib@learn2earntech.com">Email Us</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

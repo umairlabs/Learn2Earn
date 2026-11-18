@@ -1,0 +1,223 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+    <div class="theme-wrapper">
+        <app-header [scrolled]="scrolled" slot="fixed"></app-header>
+
+        <!-- 1) HERO SECTION -->
+        <section class="about-hero">
+            <div class="hero-container">
+                <h1>Transforming Ambition into <span>Achievement</span></h1>
+                <p>Learn2Earn isn't just a company; it's a movement bridging the gap between talent and industry demand.
+                </p>
+            </div>
+        </section>
+
+        <!-- 2) MISSION & VISION -->
+        <section class="mission-vision reveal-section">
+            <ion-grid>
+                <ion-row>
+                    <ion-col size-md="6" size="12">
+                        <div class="mission-card">
+                            <div class="icon-box"><ion-icon name="rocket-outline"></ion-icon></div>
+                            <h2>Our Mission</h2>
+                            <p>To empower individuals with industry-standard technical skills while delivering
+                                world-class software solutions that drive business growth.</p>
+                        </div>
+                    </ion-col>
+                    <ion-col size-md="6" size="12">
+                        <div class="vision-card">
+                            <div class="icon-box"><ion-icon name="eye-outline"></ion-icon></div>
+                            <h2>Our Vision</h2>
+                            <p>To be the global hub where technology meets education, creating a future where everyone
+                                has the tools to succeed in the digital economy.</p>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </section>
+
+        <!-- 3) CORE VALUES -->
+        <section class="values-section reveal-section">
+            <div class="section-container">
+                <h2 class="section-title">Driven by <span>Values</span></h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <ion-icon name="heart-outline"></ion-icon>
+                        <h3>Integrity</h3>
+                        <p>We build trust through transparency and ethical practices in every line of code.</p>
+                    </div>
+                    <div class="value-card">
+                        <ion-icon name="trophy-outline"></ion-icon>
+                        <h3>Excellence</h3>
+                        <p>We never settle for "good enough." We aim for perfection in delivery and training.</p>
+                    </div>
+                    <div class="value-card">
+                        <ion-icon name="star-outline"></ion-icon>
+                        <h3>Innovation</h3>
+                        <p>Staying ahead of the curve is our default setting. We embrace the new.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) INTERACTIVE TEAM SECTION -->
+        <section class="team-section">
+            <div class="grid-bg"></div>
+            <div class="ambient-particles"></div>
+            <div class="light-beams">
+                <div class="beam beam-1"></div>
+                <div class="beam beam-2"></div>
+            </div>
+
+            <!-- Desktop Cinematic Layout (Visible on Large Screens) -->
+            <div class="team-container desktop-only">
+                <!-- Center Hub -->
+                <div class="center-hub">
+                    <div class="hub-glow"></div>
+                    <div class="hub-content">
+                        <span class="logo-text">Learn<span>2Earn</span></span>
+                        <div class="hub-label">TEAM</div>
+                    </div>
+                </div>
+
+                <!-- Team Nodes -->
+                @for (member of teamMembers; track member.id) {
+                <div class="team-node-wrapper" [style.left]="member.pos?.x + '%'" [style.top]="member.pos?.y + '%'">
+                    <div class="connection-line" [class.active]="activeMember?.id === member.id"
+                        [style.transform]="'rotate(' + member.lineStyle?.rotation + 'deg)'"
+                        [style.width]="(activeMember?.id === member.id ? member.lineStyle?.length : 0) + '%'">
+                    </div>
+                    <div class="team-node" (mouseenter)="setActiveMember(member)" (mouseleave)="setActiveMember(null)"
+                        [class.active]="activeMember?.id === member.id">
+                        <div class="pin-head">
+                            <img [src]="member.image" [alt]="member.name" loading="lazy" decoding="async">
+                        </div>
+                        <div class="pin-tail"></div>
+                    </div>
+                </div>
+                }
+
+                <!-- Info Card -->
+                @if (activeMember) {
+                <div class="info-card"
+                    [style.right]="activeMember!.pos!.x > 50 ? (100 - activeMember!.pos!.x + 5) + '%' : 'auto'"
+                    [style.left]="activeMember!.pos!.x <= 50 ? (activeMember!.pos!.x + 5) + '%' : 'auto'"
+                    [style.top]="(activeMember!.pos!.y > 50 ? activeMember!.pos!.y - 25 : activeMember!.pos!.y - 5) + '%'">
+                    <div class="card-content">
+                        <span class="role-badge">{{ activeMember.role }}</span>
+                        <h3>{{ activeMember.name }}</h3>
+                        <p class="email">{{ activeMember.email }}</p>
+                        <div class="card-divider"></div>
+                        <p class="bio">{{ activeMember.bio }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <!-- Mobile & Tablet Card Layout (Visible on Small Screens) -->
+            <div class="team-mobile-container mobile-tablet-only">
+                <div class="mobile-team-header">
+                    <span class="logo-text">Learn<span>2Earn</span></span>
+                    <div class="hub-label">TEAM</div>
+                </div>
+
+                <div class="team-cards-grid">
+                    @for (member of teamMembers; track member.id) {
+                    <div class="member-card">
+                        <div class="card-image-wrapper">
+                            <img [src]="member.image" [alt]="member.name" loading="lazy" decoding="async">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="card-body">
+                            <span class="member-role">{{ member.role }}</span>
+                            <h3 class="member-name">{{ member.name }}</h3>
+                            <p class="member-bio">{{ member.bio }}</p>
+                            <div class="member-contact">
+                                <span class="member-email">{{ member.email }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) JOURNEY / TIMELINE -->
+        <section class="journey-section reveal-section">
+            <div class="section-container">
+                <h2 class="section-title">Our <span>Journey</span></h2>
+
+                <div class="timeline">
+
+                    <div class="timeline-item">
+                        <div class="year">2020</div>
+                        <div class="content">
+                            <h3>The Beginning</h3>
+                            <p>Learn2Earn was founded by two passionate engineers, Bilal and Shahzaib, with a vision to
+                                transform tech education and create real career opportunities.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="year">2021</div>
+                        <div class="content">
+                            <h3>First Steps</h3>
+                            <p>They started working with small local clients, building innovative solutions while
+                                gaining valuable real-world experience.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="year">2022</div>
+                        <div class="content">
+                            <h3>Going Global</h3>
+                            <p>Soon, their dedication led them to international projects, helping businesses worldwide
+                                with modern and scalable technology.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="year">2023</div>
+                        <div class="content">
+                            <h3>Empowering Students</h3>
+                            <p>They began training students, turning beginners into skilled professionals. Many of these
+                                students are now working alongside the team.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="year">2025</div>
+                        <div class="content">
+                            <h3>Today</h3>
+                            <p>Today, Learn2Earn is a growing software house with multiple international clients, a
+                                strong team, and a mission to build the future of tech and talent.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="year">2026</div>
+                        <div class="content">
+                            <h3>The Future Vision</h3>
+                            <p>Learn2Earn aims to expand globally, partner with leading tech companies, and empower
+                                thousands of students by creating job-ready professionals and innovative AI-driven
+                                solutions.</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) CALL TO ACTION -->
+        <section class="cta-section reveal-section">
+            <div class="cta-inner">
+                <h2>Be Part of Our Story</h2>
+                <p>Join our mission to reshape the tech landscape of tomorrow.</p>
+                <ion-button class="cta-btn secondary" (click)="openContactAlert($event)">Contact Us</ion-button>
+            </div>
+        </section>
+        <!-- CONTACT ALERT COMPONENT -->
+        <app-alert [isOpen]="isModalOpen" [experts]="serviceExperts" (closed)="isModalOpen = false"></app-alert>
+        <app-footer></app-footer>
+    </div>
+</ion-content>

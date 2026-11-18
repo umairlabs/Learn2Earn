@@ -1,0 +1,99 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+    <div class="theme-wrapper">
+        <app-header [scrolled]="scrolled" slot="fixed"></app-header>
+
+        <!-- 1) HERO SECTION -->
+        <section class="courses-hero">
+            <div class="hero-container">
+                <h1>Master the <span>Skills</span> that Matter</h1>
+                <p>Expert-led courses designed for professionals who want to lead the next generation of tech
+                    innovation.</p>
+            </div>
+        </section>
+
+        <!-- 2) FEATURED COURSES -->
+        <section class="courses-grid-section">
+            <div class="section-container">
+                <h2 class="section-title">Explore <span>Categories</span></h2>
+                <ion-grid>
+                    <ion-row class="courses-grid">
+                        @for (course of courses; track course.title) {
+                        <ion-col size-lg="4" size-md="6" size="12" class="course-col">
+                            <div class="course-card">
+                                <div class="course-image">
+                                    <img [src]="course.image" [alt]="course.title" loading="lazy">
+                                    <div class="badge">{{ course.level }}</div>
+                                </div>
+                                <div class="course-content">
+                                    <h3>{{ course.title }}</h3>
+                                    <div class="course-details">
+                                        <span><ion-icon name="time-outline"></ion-icon> {{ course.duration }}</span>
+                                        <span><ion-icon name="star"></ion-icon> {{ course.rating }}</span>
+                                    </div>
+                                    <div class="course-footer">
+                                        <span><ion-icon name="people-outline"></ion-icon> {{ course.students }}
+                                            Students</span>
+                                        <ion-button fill="clear" (click)="isAlertOpen = true">Enroll <ion-icon
+                                                name="arrow-forward" slot="end"></ion-icon></ion-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-col>
+                        }
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </section>
+
+        <!-- 3) INSTRUCTORS SECTION -->
+        <section class="instructors-section">
+            <div class="section-container">
+                <h2 class="section-title">Learn from <span>Market Experts</span></h2>
+                <div class="instructors-grid">
+                    @for (mentor of instructors; track mentor.name) {
+                    <div class="instructor-card">
+                        <div class="instructor-photo">
+                            <img [src]="mentor.image" [alt]="mentor.name + ' - ' + mentor.role" loading="lazy">
+                        </div>
+                        <div class="instructor-info">
+                            <h3>{{ mentor.name }}</h3>
+                            <p class="role">{{ mentor.role }}</p>
+                            <p class="bio">{{ mentor.bio }}</p>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) TESTIMONIALS (SUBTLE) -->
+        <section class="testimonial-section">
+            <div class="section-container">
+                <div class="testimonial-slider">
+                    <div class="quote-icon">“</div>
+                    <p>Learn2Earn didn't just teach me how to code; they taught me how to think like an engineer. Within
+                        month of graduating, I landed my dream job at a top software house.</p>
+                    <div class="student-info">
+                        <strong>Ahmad Raza</strong>
+                        <span>Senior Web Developer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) FINAL CTA -->
+        <section class="cta-section">
+            <div class="cta-inner">
+                <h2>Start Your Journey Today</h2>
+                <p>Early bird discounts available for next month's cohort. Don't miss out!</p>
+                <ion-button class="cta-btn secondary" (click)="isAlertOpen = true">Enroll Now</ion-button>
+            </div>
+        </section>
+
+        <app-footer></app-footer>
+    </div>
+
+    <!-- REUSABLE ALERT COMPONENT -->
+    <app-alert [isOpen]="isAlertOpen" [address]="'Building No.23, Main Pine Valley, pakpattan, punjab, pakistan'"
+        (closed)="isAlertOpen = false"></app-alert>
+</ion-content>

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
+/* Global Selection Style */
+::selection {
+    background: var(--primary-orange);
+    color: white;
+}
+
+::-moz-selection {
+    background: var(--primary-orange);
+    color: white;
+}
+
+:root {
+    --primary-orange: #F4A024;
+    --primary-orange-rgb: 244, 160, 36;
+    --bg-light: #F9FAFB;
+    --dark-navy: #111827;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B7280;
+    --font-headings: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+@import '@ionic/angular/css/palettes/dark.system.css';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-headings);
+}
+
+ion-content {
+    --background: var(--bg-light);
+    font-family: var(--font-body);
+}
+
+.theme-wrapper {
+    --theme-bg: #ffffff;
+    --theme-text: #1a1a1a;
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    min-height: 100vh;
+    transition: background-color 0.1s linear, color 0.1s linear;
+}
+
+.logo-text {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--theme-text);
+    letter-spacing: -0.5px;
+
+    span {
+        color: var(--primary-orange);
+    }
+}
+
+/* Common Buttons */
+.primary-orange-btn {
+    --background: var(--primary-orange);
+    --color: white;
+    --border-radius: 30px;
+    --padding-start: 32px;
+    --padding-end: 32px;
+    height: 56px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.secondary-outline-btn {
+    --color: var(--theme-text);
+    --border-color: rgba(var(--primary-orange-rgb), 0.3);
+    --border-radius: 30px;
+    --padding-start: 32px;
+    --padding-end: 32px;
+    height: 56px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0;
+}

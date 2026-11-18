@@ -1,0 +1,110 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+    <div class="theme-wrapper">
+        <app-header [scrolled]="scrolled" slot="fixed"></app-header>
+
+        <!-- 1) HERO SECTION -->
+        <section class="portfolio-hero">
+            <div class="hero-container">
+                <h1>Crafting Digital <span>Masterpieces</span></h1>
+                <p>A showcase of our most ambitious projects, ranging from complex enterprise systems to elegant mobile
+                    experiences.</p>
+            </div>
+        </section>
+
+        <!-- 2) CATEGORY FILTER -->
+        <section class="filter-section">
+            <div class="section-container">
+                <div class="category-list">
+                    @for (cat of categories; track cat) {
+                    <button [class.active]="selectedCategory === cat" (click)="setCategory(cat)">
+                        {{ cat }}
+                    </button>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 3) PROJECT GRID -->
+        <section class="project-grid-section">
+            <div class="section-container">
+                <div class="project-grid">
+                    @for (project of filteredProjects; track project.title) {
+                    <div class="project-card">
+                        <div class="project-media">
+                            <picture>
+                                @if (project.image.includes('.') || project.image.startsWith('http')) {
+                                <img [src]="project.image" [alt]="project.title" loading="lazy" decoding="async">
+                                } @else {
+                                <source [srcset]="'assets/' + project.image + '.webp'" type="image/webp">
+                                <img [src]="'assets/' + project.image + '.webp'" [alt]="project.title" loading="lazy"
+                                    decoding="async">
+                                }
+                            </picture>
+
+                            <!-- Platform Badges -->
+                            <div class="platform-badges">
+                                @if (project.platforms.includes('web')) {
+                                <div class="badge-icon"><ion-icon name="globe-outline"></ion-icon></div>
+                                }
+                                @if (project.platforms.includes('android')) {
+                                <div class="badge-icon"><ion-icon name="logo-google-playstore"></ion-icon></div>
+                                }
+                                @if (project.platforms.includes('ios')) {
+                                <div class="badge-icon"><ion-icon name="logo-apple"></ion-icon></div>
+                                }
+                            </div>
+
+                            <div class="overlay">
+                                <div class="action-links">
+                                    @if (project.liveUrl) {
+                                    <ion-button [href]="project.liveUrl" target="_blank" fill="solid"
+                                        class="action-btn live">
+                                        <ion-icon name="globe-outline" slot="start"></ion-icon> Live Demo
+                                    </ion-button>
+                                    }
+                                    @if (project.playStoreUrl) {
+                                    <ion-button [href]="project.playStoreUrl" target="_blank" fill="solid"
+                                        class="action-btn play">
+                                        <ion-icon name="logo-google-playstore" slot="start"></ion-icon> Play Store
+                                    </ion-button>
+                                    }
+                                    @if (project.appStoreUrl) {
+                                    <ion-button [href]="project.appStoreUrl" target="_blank" fill="solid"
+                                        class="action-btn apple">
+                                        <ion-icon name="logo-apple" slot="start"></ion-icon> App Store
+                                    </ion-button>
+                                    }
+                                    @if (!project.liveUrl && !project.playStoreUrl && !project.appStoreUrl) {
+                                    <ion-button fill="clear" class="expand-btn">
+                                        <ion-icon name="expand-outline"></ion-icon>
+                                    </ion-button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="cat">{{ project.category }}</span>
+                            <h3>{{ project.title }}</h3>
+                            <p>{{ project.desc }}</p>
+                            <!-- <ion-button fill="clear" class="view-btn">View Case Study <ion-icon
+                                    name="arrow-forward-outline" slot="end"></ion-icon></ion-button> -->
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) CTA -->
+        <section class="cta-section">
+            <div class="cta-inner">
+                <h2>Have a vision? We’ll build it.</h2>
+                <p>Let’s discuss your next project and see how we can bring it to life.</p>
+                <ion-button class="cta-btn secondary" href="https://www.fiverr.com/learn2earnpk" target="_blank">Start
+                    Your Project</ion-button>
+            </div>
+        </section>
+
+        <app-footer></app-footer>
+    </div>
+</ion-content>

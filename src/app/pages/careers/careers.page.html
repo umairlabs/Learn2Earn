@@ -1,0 +1,97 @@
+<ion-content [fullscreen]="true" [scrollEvents]="true">
+    <div class="theme-wrapper">
+        <app-header [scrolled]="scrolled" slot="fixed"></app-header>
+
+        <!-- 1) HERO SECTION -->
+        <section class="careers-hero">
+            <div class="hero-container">
+                <h1>Build the <span>Future</span> with Us</h1>
+                <p>Join a fast-growing team of innovators, creators, and teachers working to bridge the gap between
+                    education and production.</p>
+                <ion-button class="primary-orange-btn" (click)="scrollToOpenings()">View Openings</ion-button>
+            </div>
+        </section>
+
+        <!-- 2) CULTURE SECTION -->
+        <section class="culture-section">
+            <div class="section-container">
+                <ion-grid>
+                    <ion-row class="ion-align-items-center">
+                        <ion-col size-lg="6" size="12">
+                            <div class="culture-content">
+                                <h2>Our <span>Culture</span></h2>
+                                <p>We believe in autonomy, mastery, and purpose. At Learn2Earn, you're not just an
+                                    employee; you're a stakeholder in our mission to redefine tech education and
+                                    software delivery.</p>
+                                <ul>
+                                    <li><ion-icon name="flash-outline"></ion-icon> High-paced innovation</li>
+                                    <li><ion-icon name="cafe-outline"></ion-icon> Collaborative environment</li>
+                                    <li><ion-icon name="time-outline"></ion-icon> Work-life equilibrium</li>
+                                </ul>
+                            </div>
+                        </ion-col>
+                        <ion-col size-lg="6" size="12">
+                            <div class="culture-image-grid">
+                                <div class="img-box box-1"
+                                    style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000')">
+                                </div>
+                                <div class="img-box box-2"
+                                    style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000')">
+                                </div>
+                                <div class="img-box box-3"
+                                    style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=1000')">
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </section>
+
+        <!-- 3) BENEFITS -->
+        <section class="benefits-section">
+            <div class="section-container">
+                <h2 class="section-title">Perks & <span>Benefits</span></h2>
+                <div class="benefits-grid">
+                    @for (benefit of benefits; track benefit.title) {
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><ion-icon [name]="benefit.icon"></ion-icon></div>
+                        <h3>{{ benefit.title }}</h3>
+                        <p>{{ benefit.desc }}</p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) OPEN POSITIONS -->
+        <section class="jobs-section" id="openings">
+            <div class="section-container">
+                <h2 class="section-title">Open <span>Positions</span></h2>
+                <div class="jobs-list">
+                    @for (job of jobs; track job.title) {
+                    <div class="job-card">
+                        <div class="job-info">
+                            <h3>{{ job.title }}</h3>
+                            <p>{{ job.location }} • {{ job.type }}</p>
+                        </div>
+                        <ion-button fill="outline" class="apply-btn">Apply Now <ion-icon name="arrow-forward"
+                                slot="end"></ion-icon></ion-button>
+                    </div>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) CALL TO ACTION -->
+        <section class="cta-section reveal-section">
+            <div class="cta-inner">
+                <h2>Ready to Start Your Career?</h2>
+                <p>If you don't see a position that fits but still want to join us, send your CV anyway!</p>
+                <ion-button class="cta-btn secondary">Send your CV</ion-button>
+            </div>
+        </section>
+
+        <app-footer></app-footer>
+    </div>
+</ion-content>

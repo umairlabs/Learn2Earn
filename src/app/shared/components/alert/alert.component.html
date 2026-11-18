@@ -1,0 +1,52 @@
+<ion-modal [isOpen]="isOpen" (didDismiss)="dismiss()" class="contact-modal">
+    <ng-template>
+        <div class="modal-wrapper">
+            <div class="modal-header">
+                <h2>Contact Our Experts</h2>
+            </div>
+
+            <div class="modal-body">
+                @if (address) {
+                <div class="location-section">
+                    <div class="location-card">
+                        <div class="location-icon">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+                        <div class="location-info">
+                            <h3>Our Location</h3>
+                            <p>{{ address }}</p>
+                        </div>
+                    </div>
+                </div>
+                }
+
+                <div class="expert-contacts">
+                    @for (expert of experts; track expert.name) {
+                    <div class="expert-card">
+                        <div class="expert-avatar">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </div>
+                        <div class="expert-info">
+                            <h3>{{ expert.name }}</h3>
+                            <div class="expert-actions">
+                                <a [href]="'mailto:' + expert.email" class="contact-item">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <span>{{ expert.email }}</span>
+                                </a>
+                                <a [href]="'tel:' + expert.phone" class="contact-item">
+                                    <ion-icon name="call-outline"></ion-icon>
+                                    <span>{{ expert.phone }}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <ion-button (click)="dismiss()" class="close-btn">Close</ion-button>
+            </div>
+        </div>
+    </ng-template>
+</ion-modal>
